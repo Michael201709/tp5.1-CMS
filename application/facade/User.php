@@ -1,9 +1,13 @@
 <?php
-namespace app\facade\model;
-
-use think\Model;
-
-class User extends Model
-{
-
-}
+    
+    namespace app\facade;
+    
+    use think\Facade;
+    
+    class User extends Facade
+    {
+        protected static function getFacadeClass()
+        {
+            return 'app\common\model\User';
+        }
+    }

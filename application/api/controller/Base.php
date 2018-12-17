@@ -1,7 +1,9 @@
 <?php
-namespace app\api\controller;
-
-class Base
-{
-
-}
+    
+    namespace app\api\controller;
+    
+    use think\Controller;
+    
+    class Base extends Controller
+    {
+    }

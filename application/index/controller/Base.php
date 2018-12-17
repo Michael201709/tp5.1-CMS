@@ -1,7 +1,9 @@
 <?php
 namespace app\index\controller;
 
-class Base
+use think\Controller;
+
+class Base extends Controller
 {
 
 }

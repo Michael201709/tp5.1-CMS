@@ -1,7 +1,9 @@
 <?php
 namespace app\shop\controller;
 
-class Base
+use think\Controller;
+
+class Base extends Controller
 {
 
 }
