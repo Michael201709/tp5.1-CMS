@@ -5,6 +5,7 @@ class Index extends Base
 {
     public function index()
     {
-        echo 'admin';
+        dump($_SERVER);
+        die();
     }
 }

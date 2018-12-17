@@ -5,6 +5,7 @@ class Index extends Base
 {
     public function index()
     {
-        echo 'index';
+        dump(config('app.url'));
+        die();
     }
 }
