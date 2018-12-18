@@ -5,7 +5,7 @@ class Index extends Base
 {
     public function index()
     {
-        dump(config('app.url'));
+        dump(get_http_s());
         die();
     }
 }
