@@ -99,9 +99,9 @@ layui.define(['jquery', 'larryMenu', 'util'], function(exports) {
 				}
 			}],
 			[{
-				text: "访问larryMS官网",
+				text: "访问Michael's CMS官网",
 				func: function() {
-					top.window.open('https://www.larryms.com');
+					top.window.open('https://cms.machengjun.com');
 				}
 			}]
 		];
