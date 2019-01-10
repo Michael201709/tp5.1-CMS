@@ -1,26 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>后台首页</title>
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="Author" content="larry"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="Shortcut Icon" href="/favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="../larryms/larry/css/larry.css" media="all">
-    <link rel="stylesheet" type="text/css" href="../larryms/css/admin/base.css" media="all">
-    <link rel="stylesheet" type="text/css" href="../larryms/css/admin/console.css">
-    <!--[if lt IE 9]>
-    <script>document.documentElement.focus();</script><![endif]-->
-</head>
+{extend name="base:index" /}
+
+{block name="css"}
+<link rel="stylesheet" type="text/css" href="../larryms/css/admin/base.css" media="all">
+<link rel="stylesheet" type="text/css" href="../larryms/css/admin/console.css">
+{/block}
+
+{block name="main"}
 <body class="larry-bg-gray">
-<!-- 让IE8/9支持媒体查询，从而兼容栅格 --><!--[if lt IE 10]>
-<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script><![endif]-->
 <div class="layui-fluid">
     <div class="larry-container">
         <!-- 快捷导航 -->
@@ -321,8 +307,10 @@
         </div>
     </div>
 </div>
-<!-- 加载js文件-->
-<script type="text/javascript" src="../larryms/layui/layui.js"></script>
+</body>
+{/block}
+
+{block name="js"}
 <script type="text/javascript">
     layui.cache.page = 'console';
     layui.config({
@@ -333,5 +321,4 @@
         larry: 'js/base',
     }).use('larry');
 </script>
-</body>
-</html>
+{/block}
