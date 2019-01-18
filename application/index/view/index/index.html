@@ -1,0 +1,163 @@
+{extend name="admin@base:index" /}
+{block name="css"}
+{css href="__LARRYMS__/css/index/index.css,__LARRYMS__/lib/extendStyle/animatelib/animations.css,__LARRYMS__/css/admin/base.css,__LARRYMS__/css/admin/console.css" /}
+{/block}
+
+{block name="main"}
+<body class="larry-bg-gray">
+<div class="layui-fluid">
+    <div class="larry-container">
+        <!-- 快捷导航 -->
+        <div class="layui-row larry-shortcut layui-col-space15" id="shortcut">
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
+                <section class="shortcut pos-r larry-ico-rotate">
+                    <a larry-tab="iframe" class="pos-r" href="{:get_api_url('blog');}" target="_blank" data-id="606" data-group="0" data-icon="larry-daohang" data-font="larry-icon">
+                        <div class="larry-ico larry-bg-red"><i class="larry-icon larry-daohang"></i></div>
+                        <div class="larry-value">
+                            <cite class="un-nums">个人博客主页</cite>
+                        </div>
+                    </a>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
+                <section class="shortcut pos-r larry-ico-rotate">
+                    <a larry-tab="iframe" class="pos-r" href="{:get_api_url('shop');}" target="_blank" data-id='302' data-group="1" data-icon="larry-chanpinC" data-font="larry-icon">
+                        <div class="larry-ico larry-bg-two"><i class="larry-icon larry-chanpinC"></i></div>
+                        <div class="larry-value">
+                            <cite class="un-nums">BBC商城项目</cite>
+                        </div>
+                    </a>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col layui-hide-xs">
+                <section class="shortcut pos-r larry-ico-rotate">
+                    <a larry-tab="iframe" class="pos-r" href="{:get_api_url('ecshop');}" target="_blank" data-group="3" data-icon="larry-pc" data-id="312" data-font="larry-icon">
+                        <div class="larry-ico larry-bg-green"><i class="larry-icon larry-pc"></i></div>
+                        <div class="larry-value">
+                            <cite class="un-nums">ECshop-Demo</cite>
+                        </div>
+                    </a>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col  layui-hide-xs">
+                <section class="shortcut pos-r larry-ico-rotate">
+                    <a larry-tab="iframe" class="pos-r" href="{:get_api_url('tp');}" target="_blank" data-icon="larry-xiangmu" data-font="larry-icon" data-id="798" data-group="2">
+                        <div class="larry-ico larry-bg-purple"><i class="larry-icon larry-xiangmu"></i></div>
+                        <div class="larry-value">
+                            <cite class="un-nums">TP5.1 shop-Demo</cite>
+                        </div>
+                    </a>
+                </section>
+            </div>
+            
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
+                <section class="shortcut pos-r larry-ico-rotate">
+                    <a larry-tab="iframe" class="pos-r" href="{:get_api_url('tpshop');}" target="_blank" data-icon="larry-message_icon" data-font="larry-icon" data-id="12" data-group="0">
+                        <div class="larry-ico larry-bg-orange"><i class="larry-icon larry-message_icon"></i></div>
+                        <div class="larry-value">
+                            <cite class="un-nums">TP5.0 shop-Demo</cite>
+                        </div>
+                    </a>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
+                <section class="shortcut larry-ico-rotate">
+                    <a larry-tab="iframe" class="pos-r" href="{:get_api_url('apple');}" target="_blank" data-icon="larry-neirongguanli1" data-font="larry-icon" data-id="26" data-group='3'>
+                        <div class="larry-ico larry-bg-blue"><i class="larry-icon larry-neirongguanli1"></i></div>
+                        <div class="larry-value">
+                            <cite class="un-nums">CMS-Demo</cite>
+                        </div>
+                    </a>
+                </section>
+            </div>
+        </div>
+        <div class="larryms-card layui-row layui-col-space15 larryms-products layui-hide">
+            <!-- 常用板块 -->
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+                <section class="layui-card">
+                    <div class="layui-card-body ui-a" larry-tab="iframe" data-url='uidemo/basics/larrymsbutton.html' data-icon="larry-anniu" data-font="larry-icon" data-id="153" data-group="2">
+                        <i class="larry-icon larry-jiemiansheji"></i> <cite class="layui-hide">LarryMS按钮</cite>
+                        <p>UI范例</p>
+                        <div class="label-content">
+                            <span class="label label-default label-outline">larry组件</span> <span class="label label-default label-outline">layui组件</span> <span class="label label-default label-outline">基本</span> <span class="label label-default label-outline">进阶</span> <span class="label label-default label-outline">布局</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+                <section class="layui-card">
+                    <div class="layui-card-body ui-b" larry-tab="iframe" data-url='library/charts/ani.html' data-icon="larry-donghua" data-font="larry-icon" data-id="78" data-group="1">
+                        <i class="larry-icon larry-js1"></i> <cite class="layui-hide">aniJS动画库</cite>
+                        <p>JS组件库</p>
+                        <div class="label-content">
+                            <span class="label label-default label-outline">动画库</span> <span class="label label-default label-outline">120+JS库</span> <span class="label label-default label-outline">编辑器</span> <span class="label label-default label-outline">2000+图标库</span> <span class="label label-default label-outline">用户自定义组件</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+                <section class="layui-card">
+                    <div class="layui-card-body ui-c" larry-tab="iframe" data-url='use/notice.html' data-icon="larry-info" data-font="larry-icon" data-id="89" data-group="0">
+                        <i class="larry-icon larry-gailan"></i> <cite class="layui-hide">消息推送功能</cite>
+                        <p>框架基础功能示例</p>
+                        <div class="label-content">
+                            <span class="label label-default label-outline">消息通知</span> <span class="label label-default label-outline">分步表单</span> <span class="label label-default label-outline">tree</span> <span class="label label-default label-outline">表单生成器</span> <span class="label label-default label-outline">treeTable</span> <span class="label label-default label-outline">示例持续更新</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+                <section class="layui-card">
+                    <div class="layui-card-body ui-f" larry-tab="iframe" data-url='larrycms/content/list.html' data-icon="larry-neirongguanli2" data-font="larry-icon" data-id="26" data-group="3">
+                        <i class="larry-icon larry-msnui-sys-report"></i> <cite class="layui-hide">所有文章列表</cite>
+                        <p>系统行业模板</p>
+                        <div class="label-content">
+                            <span class="label label-default label-outline">权限</span> <span class="label label-default label-outline">菜单</span> <span class="label label-default label-outline">CMS</span> <span class="label label-default label-outline">CRM</span> <span class="label label-default label-outline">OA</span> <span class="label label-default label-outline">微信公众</span> <span class="label label-default label-outline">200+模板页</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+                <section class="layui-card">
+                    <div class="layui-card-body ui-e" larry-tab="iframe" data-url='library/charts/echarts.html' data-icon="larry-moxing" data-font="larry-icon" data-id="75" data-group="1">
+                        <i class="larry-icon larry-tubiao-zhuzhuangtu"></i> <cite class="layui-hide">百度Echarts</cite>
+                        <p>图表动画</p>
+                        <div class="label-content">
+                            <span class="label label-default label-outline">Echarts</span> <span class="label label-default label-outline">仪表盘</span> <span class="label label-default label-outline">svg动画</span> <span class="label label-default label-outline">scrolla动画</span> <span class="label label-default label-outline">炫酷CSS3</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2">
+                <section class="layui-card">
+                    <div class="layui-card-body ui-d" larry-tab="iframe" data-url='general/scene/4041.html' data-icon="larry-lianxiren" data-font="larry-icon" data-id="171" data-group="3">
+                        <i class="larry-icon larry-changyongshili"></i> <cite class="layui-hide">404.1</cite>
+                        <p>页面示例</p>
+                        <div class="label-content">
+                            <span class="label label-default label-outline">相册</span> <span class="label label-default label-outline">400系列</span> <span class="label label-default label-outline">注册登录</span> <span class="label label-default label-outline">联系人</span> <span class="label label-default label-outline">H5场景</span> <span class="label label-default label-outline">60+常用页</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        
+        </div>
+    </div>
+</div>
+</body>
+{/block}
+
+{block name="js"}
+<script type="text/javascript">
+    layui.cache.page = 'index';
+    layui.config({
+        version: "2.0.8",
+        base: '__LARRYMS__/',
+        mods: 'home/',
+        page: 'index',
+        rightMenu: true,
+        // identified: 'main',
+    }).extend({
+        larry: 'js/base',
+    }).use('larry');
+</script>
+{/block}

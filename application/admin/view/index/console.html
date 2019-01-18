@@ -1,8 +1,7 @@
 {extend name="base:index" /}
 
 {block name="css"}
-<link rel="stylesheet" type="text/css" href="../larryms/css/admin/base.css" media="all">
-<link rel="stylesheet" type="text/css" href="../larryms/css/admin/console.css">
+{css href="__LARRYMS__/css/admin/base.css,__LARRYMS__/css/admin/console.css" /}
 {/block}
 
 {block name="main"}
@@ -315,7 +314,7 @@
     layui.cache.page = 'console';
     layui.config({
         version: "2.0.8",
-        base: '../larryms/',
+        base: '__LARRYMS__/',
         identified: 'main',
     }).extend({
         larry: 'js/base',
