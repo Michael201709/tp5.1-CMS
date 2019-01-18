@@ -70,7 +70,30 @@ function get_api_url($domain = '')
     return get_http_s() . ($domain ? :'www') . '.' . get_domain() . '/';
 }
 
+/**
+ *
+ * Notes:  获取 指定时间 是本年度的第几天
+ * Author: Michael Ma
+ *
+ * @param int $time
+ *
+ * @return string
+ */
+function getDays($time = 0)
+{
+    $time = $time ? :time();
+    
+    return date('今天是Y年的第', $time) . (date('z', $time) + 1) . '天，' . date('第W周，公历n月j日，', $time) . '星期' . toChineseWeek(date('w', $time)) . date('，时间：H:i:s', $time);
+}
 
+// 以周纬度，前一周*7 + 本周第几天-元旦是第几天 + 1 (strtotime(date('Y', time()) . '0101'))
+// 以月维度，闰年2月+1
+function toChineseWeek($num)
+{
+    $arr = ['日', '一', '二', '三', '四', '五', '六'];
+    
+    return $arr[intval($num)];
+}
 
 /*****************以下为参考的公共方法************************/
 /**

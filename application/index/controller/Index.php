@@ -1,11 +1,18 @@
 <?php
+
 namespace app\index\controller;
+
+use think\App;
 
 class Index extends Base
 {
+    public function __construct(App $app = null)
+    {
+        parent::__construct($app);
+    }
+    
     public function index()
     {
-        dump(get_http_s());
-        die();
+        return getDays();
     }
 }
