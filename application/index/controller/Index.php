@@ -15,4 +15,9 @@ class Index extends Base
     {
         return view();
     }
+    
+    public function info()
+    {
+        return view();
+    }
 }

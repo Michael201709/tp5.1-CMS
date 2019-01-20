@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PHP面试掌握范围</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h2>PHP基础</h2>
+<h3>时间函数</h3>
+<blockquote>
+<p>time()函数返回自 Unix 纪元（January 1 1970 00:00:00 GMT）起的当前时间的秒数int时间戳;</p>
+</blockquote>
+<p>前一天的时间、一周后的时间</p>
+<pre><code>strtotime('-1 day');
+time()+7*24*60*60;
+</code></pre>
+
+<blockquote>
+<p>date()格式化本地日期和时间;</p>
+</blockquote>
+<p>获取当前的时区、设置/矫正时区</p>
+<pre><code>date_timezone_get();ini_get('date.timezone');
+date_timezone_set();ini_set('date.timezone','PTC');
+</code></pre>
+
+<h4>时间函数结合应用</h4>
+<ol>
+<li>
+<p>获取前一天的时间，并以&quot;2019-01-20 20:01:29&quot;的形式打印;</p>
+<pre><code>echo date('Y-m-d H:i:s',strtotime('-1 day'));
+</code></pre>
+
+<p>或</p>
+<pre><code>echo date('Y-m-d H:i:s',time()-1*24*60*60);
+</code></pre>
+
+</li>
+<li>
+<p>返回时间戳所在年份的第几天，第几周，星期几以及具体的日期和时间</p>
+<p>格式：今天是2019年的第19天，第03周，公历1月19日，星期六，时间：12：27：57</p>
+<pre><code>/**
+ *
+ * Notes:  获取 指定时间 是本年度的第几天，第几周，日期，星期几以及具体的时间
+ * Author: Michael Ma
+ *
+ * @param int $time
+ *
+ * @return string
+ */
+function getDays($time = 0)
+{
+    $time = $time ? :time();
+    $arr = ['日', '一', '二', '三', '四', '五', '六'];
+
+    return date('今天是Y年的第', $time) . (date('z', $time) + 1) . '天，' . date('第W周，公历n月j日，', $time) . '星期' . $arr[intval(date('w', $time))] . date('，时间：H:i:s', $time);
+}
+
+echo getDays();// 当前
+echo getDays(1576663574);// 指定时间戳
+</code></pre>
+
+<p>其他思路：</p>
+<p>a. 以周纬度，前一周 * 7 + 本周第几天 - 元旦是该周第几天 + 1 (strtotime(date('Y', time()) . '0101'));</p>
+<p>b. 以月维度，月份的天数累计，注意闰年即可</p>
+</li>
+<li>
+<p>获取 年月日 的 初&amp;末 时间戳</p>
+<p>格式：</p>
+<p>2019年的开始时间戳：xxxxxxxxxx;结束时间戳：xxxxxxxxxx;</p>
+<p>11月的开始时间戳：xxxxxxxxxx;结束时间戳：xxxxxxxxxx;</p>
+<p>17日的开始时间戳：xxxxxxxxxx;结束时间戳：xxxxxxxxxx;</p>
+</li>
+</ol>
+<h3>数组函数</h3>
+<p>数组分为 索引数组(有序数字作为键) 和 关联数组(字符串作为键) 以及 多维数组</p>
+<blockquote>
+<p>数组长度</p>
+</blockquote>
+<pre><code>count()/sizeof()
+</code></pre>
+
+<blockquote>
+<p>合并数组</p>
+</blockquote>
+<pre><code>array_merge 把一个或多个数组合并为一个数组，直接合并，长度是俩个数组长度和，重复的值也不会覆盖，有键的保留，无键的从0开始新建索引键，值重复也将保留
++ 简单的合并，键值的合并，保留前面数组的键值，后续的数组只拿差异部分
+array_merge_recursive 递归地合并一个或多个数组 索引数组 会把相同的索引放到一个数组里面，增加数组的维度
+</code></pre>
+
+<blockquote>
+<p>追加数组</p>
+</blockquote>
+<pre><code>array_push()    尾部追加数组
+[]
+array_unshift() 向数组头部添加数组
+</code></pre>
+
+<blockquote>
+<p>删除数组</p>
+</blockquote>
+<pre><code>array_shift() 从头部删除
+array_pop() 从尾部删除
+unset(array_search()) 删除数组键
+</code></pre>
+
+<blockquote>
+<p>数组去重</p>
+</blockquote>
+<pre><code>array_unique()
+</code></pre>
+
+<blockquote>
+<p>取数组列值</p>
+</blockquote>
+<pre><code>array_column()
+</code></pre>
+
+<blockquote>
+<p>取数组键/值</p>
+</blockquote>
+<pre><code>array_keys()/array_values()
+</code></pre>
+
+<blockquote>
+<p>拆分/结合数组</p>
+</blockquote>
+<pre><code>array_slice()/array_splice()
+</code></pre>
+
+<blockquote>
+<p>判断是否 在/是 数组</p>
+</blockquote>
+<pre><code>in_array()/is_array()
+</code></pre>
+
+<blockquote>
+<p>对数组排序(以字母_ASCII或数字顺序进行升序或降序排序)</p>
+</blockquote>
+<pre><code>sort()  升序
+rsort() 降序
+asort() 关联数组值升序
+arsort() 关联数组值降序
+ksort() 关联数组键升序
+krsort() 关联数组键降序
+</code></pre>
+
+<h3>字串函数</h3>
+<blockquote>
+<p>字符串长度</p>
+</blockquote>
+<pre><code>strlen()
+</code></pre>
+
+<blockquote>
+<p>返回匹配的字符位置index数字整型，否则false</p>
+</blockquote>
+<pre><code>strpos()    首个，区分大小写
+stripos()   首个，忽略大小写
+strrpos()   末个，区分大小写
+strripos()  末个，忽略大小写
+</code></pre>
+
+<blockquote>
+<p>返回剩余的字符串</p>
+</blockquote>
+<pre><code>strstr()/strchr()   首个，区分大小写
+stristr()           首个，忽略大小写
+strrchr()           最后一次出现到结尾的字符串
+</code></pre>
+
+<blockquote>
+<p>截取字符串</p>
+</blockquote>
+<pre><code>substr(string,int start[,int length])  从哪开始截取一直到哪
+</code></pre>
+
+<blockquote>
+<p>大小写转换</p>
+</blockquote>
+<pre><code>strtolower()/strtoupper()
+</code></pre>
+
+<blockquote>
+<p>替换字符串</p>
+</blockquote>
+<pre><code>str_replace()   区分大小写
+str_ireplace()  忽略大小写
+substr_replace(string,replacement,int start[,int length]) 从哪开始换，换成啥，换几个 0表示插入
+</code></pre>
+
+<blockquote>
+<p>删除用户输入数据中的反斜杠</p>
+</blockquote>
+<pre><code>stripslashes()/stripcslashes()
+</code></pre>
+
+<blockquote>
+<p>去除用户输入数据中不必要的字符（多余的空格、制表符、换行）</p>
+</blockquote>
+<pre><code>trim() 删俩头
+rtrim() 删右
+ltrim() 删左
+</code></pre>
+
+<blockquote>
+<p>把一些预定义的字符转换为 HTML 实体</p>
+</blockquote>
+<pre><code>htmlspecialchars()
+ htmlspecialchars($_SERVER[&quot;PHP_SELF&quot;]) 可防止攻击者通过在表单中注入 HTML 或 JavaScript 代码（跨站点脚本攻击）对代码进行利用。
+</code></pre>
+
+<blockquote>
+<p>字符串数组互转</p>
+</blockquote>
+<pre><code>implode()/join()            数组转字符串
+
+explode()/str_split()       字符串转数组
+</code></pre>
+
+<blockquote>
+<p>反转字符串</p>
+</blockquote>
+<pre><code>strrev()
+</code></pre>
+
+<blockquote>
+<p>输出字符串</p>
+</blockquote>
+<pre><code>print()
+</code></pre>
+
+<blockquote>
+<p>格式化字符串</p>
+</blockquote>
+<pre><code>printf(format,arg1,arg2,arg++)          输出格式化的字符串
+fprintf(stream,format,arg1,arg2,arg++)  把格式化的字符串写入指定的输出流（例如：文件或数据库）
+sprintf(format,arg1,arg2,arg++)         把格式化的字符串写入变量中
+vfprintf(stream,format,argarray)        把格式化的字符串写到指定的输出流（例如：文件或数据库）
+vprintf(format,argarray)                输出格式化的字符串
+vsprintf(format,argarray)               把格式化字符串写入变量中
+    %% - 返回一个百分号 %
+    %b - 二进制数
+    %c - ASCII 值对应的字符
+    %d - 包含正负号的十进制数（负数、0、正数）
+    %e - 使用小写的科学计数法（例如 1.2e+2）
+    %E - 使用大写的科学计数法（例如 1.2E+2）
+    %u - 不包含正负号的十进制数（大于等于 0）
+    %f - 浮点数（本地设置）
+    %F - 浮点数（非本地设置）
+    %g - 较短的 %e 和 %f
+    %G - 较短的 %E 和 %f
+    %o - 八进制数
+    %s - 字符串
+    %x - 十六进制数（小写字母）
+    %X - 十六进制数（大写字母）
+</code></pre>
+
+<h4>字符串应用</h4>
+<p>获取请求url的文件类型后缀名</p>
+<p>如：http://cms.machengjun.com/index.php?id=10098&amp;name=Michael 获取到.php或php</p>
+<pre><code>    $url = 'http://cms.machengjun.com/index.php?id=10098&amp;name=Michael';
+    echo pathinfo( parse_url($url)['path'] )['extension'];// php
+    echo pathinfo( parse_url( $url, PHP_URL_PATH ), PATHINFO_EXTENSION );// php
+    echo strrchr(str_replace(strchr(strrchr($url, '.'), '?'), '', $url), '.');// .php
+</code></pre>
+
+<h3>魔术函数方法、常量</h3>
+<pre><code>__construct()   类的构造函数
+__destruct()    类的析构函数
+
+__call()        在对象中调用一个不可访问方法时调用
+__callStatic()  用静态方式中调用一个不可访问方法时调用
+
+__get()         获得一个类的成员变量时调用
+__set()         设置一个类的成员变量时调用
+
+__isset()       当对不可访问属性调用isset()或empty()时调用
+__unset()       当对不可访问属性调用unset()时被调用。
+
+__sleep()       执行serialize()时，先会调用这个函数
+__wakeup()      执行unserialize()时，先会调用这个函数
+
+__toString()    类被当成字符串时的回应方法
+__clone()       当对象复制完成时调用
+__autoload($className)    尝试加载未定义的类
+
+
+__LINE__        文件中的当前行号。
+__FILE__        文件的完整路径和文件名。如果用在被包含文件中，则返回被包含的文件名。
+__DIR__         文件所在的目录。如果用在被包括文件中，则返回被包括的文件所在的目录。
+__FUNCTION__    函数名称
+__CLASS__       类的名称
+__METHOD__      类的方法名
+__NAMESPACE__   当前命名空间的名称
+</code></pre>
+
+<h3>超全局数组变量</h3>
+<pre><code>$GLOBALS           用于在 PHP 脚本中的任意位置访问全局变量（从函数或方法中均可）
+$_SERVER            保存关于报头、路径和脚本位置的信息
+    $_SERVER['REQUEST_METHOD']      客服端请求的方式
+    $_SERVER['REQUEST_TIME']        客户端请求的时间戳
+    $_SERVER['REMOTE_ADDR']         客服端IP地址
+    $_SERVER['SCRIPT_URI']          客户端当前页面URI
+    $_SERVER['HTTP_REFERER']        当前页面的完整 URL（不可靠，因为不是所有用户代理都支持）。
+    $_SERVER['PHP_SELF']            请求的脚本文件名
+
+    $_SERVER['SERVER_ADDR']         请求的服务端IP地址
+    $_SERVER['SERVER_NAME']         请求的服务端域名
+    $_SERVER['SCRIPT_FILENAME']     执行脚本的绝对路径
+    $_SERVER['SCRIPT_NAME']         执行脚本的路径
+
+$_REQUEST           用于收集 HTML 表单提交的数据。
+$_POST
+$_GET
+$_FILES
+    $_FILES[&quot;file&quot;][&quot;name&quot;] - 被上传文件的名称
+    $_FILES[&quot;file&quot;][&quot;type&quot;] - 被上传文件的类型
+    $_FILES[&quot;file&quot;][&quot;size&quot;] - 被上传文件的大小，以字节计
+    $_FILES[&quot;file&quot;][&quot;tmp_name&quot;] - 存储在服务器的文件的临时副本的名称
+    $_FILES[&quot;file&quot;][&quot;error&quot;] - 由文件上传导致的错误代码
+$_ENV
+$_COOKIE
+$_SESSION
+</code></pre>
+
+<blockquote>
+<p>获取客户端ip地址</p>
+</blockquote>
+<pre><code>/**
+ *
+ * Notes:获取客户端的真实ip地址
+ * Author: Michael Ma
+ *
+ *  getenv      获取环境变量值
+ *  strcasecmp  比较两个字符，不区分大小写。返回0，&gt;0，&lt;0
+ *  
+ */
+function ip()
+{
+    if (getenv('HTTP_CLIENT_IP') &amp;&amp; strcasecmp(getenv('HTTP_CLIENT_IP'), 'unknown')) {
+        $ip = getenv('HTTP_CLIENT_IP');
+    } elseif (getenv('HTTP_X_FORWARDED_FOR') &amp;&amp; strcasecmp(getenv('HTTP_X_FORWARDED_FOR'), 'unknown')) {
+        $ip = getenv('HTTP_X_FORWARDED_FOR');
+    } elseif (getenv('REMOTE_ADDR') &amp;&amp; strcasecmp(getenv('REMOTE_ADDR'), 'unknown')) {
+        $ip = getenv('REMOTE_ADDR');
+    } elseif (isset($_SERVER['REMOTE_ADDR']) &amp;&amp; $_SERVER['REMOTE_ADDR'] &amp;&amp; strcasecmp($_SERVER['REMOTE_ADDR'], 'unknown')) {
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+
+    return preg_match('/[\d\.]{7,15}/', $ip, $matches) ? $matches [0]:'';
+}
+</code></pre>
+
+<h3>访问修饰控制符</h3>
+<pre><code>public      公共          任何地方都可以访问      默认
+private     私有          本类可访问
+protected   受保护        本类或子类可访问(实例化类外不可访问)
+
+static      静态          使用 :: 访问
+final       最终          不可继承、不可覆盖重写
+</code></pre>
+
+<h3>引入文件</h3>
+<pre><code>include     引入的文件有错误时，会继续执行，并返回一个 警告
+            每次都进行读取和评估
+            在用到时加载
+            一般放在程序的流程控制中，当程序执行时碰到才会引用，简化程序的执行流程
+
+require     引入的文件有错误时，执行会中断，并返回一个 致命 错误
+            只处理一次，效率更高
+            在一开始就加载
+            一般放在 PHP 文件的最前面，程序在执行前就会先导入要引用的文件
+
+_once       表示已加载的不加载
+            会有性能上的下降，因为他需要判断之前是否包含过。一般情况下，也不太需要去考虑，除非这已经影响到你程序的性能了。
+</code></pre>
+
+<h3>打印输出</h3>
+<pre><code>echo()      语言结构    (int、float、string)  无数据则没有返回值     输出一句话，多值之间会用，逗号分隔
+print()     函数       (int、float、string)  总返回值1
+print_r()   函数      (所有类型)              无数据则返回值类型bool
+var_dump()  函数      (所有类型)              无数据则返回NULL      输出全部信息
+
+printf()、sprintf()、vsprintf()   字符串函数，格式化打印数据
+</code></pre>
+
+<h3>断点调试</h3>
+<pre><code>die、exit        打断点，终止运行
+die()、exit()    函数输出一条消息，并退出当前脚本。
+</code></pre>
+
+<h3>常量及调用(::)</h3>
+<pre><code>const           语言结构    定义常量    类中成员变量  类中使用，不能在逻辑流程中定义，不可修改
+define()        函数      定义常量        非类中成员变量   不能类中使用，可在逻辑流程中定义覆盖
+
+defined()       检查常量是否存在
+</code></pre>
+
+<h3>传值、传址、传引用的区别及应用场景</h3>
+<pre><code>   传值
+   是把实参的值赋值给行参
+   那么对行参的修改，不会影响实参的值
+
+   传地址
+   是传值的一种特殊方式，只是他传递的是地址，不是普通的如int
+   那么传地址以后，实参和行参都指向同一个对象
+
+   传引用
+   真正的以地址的方式传递参数
+   传递以后，行参和实参都是同一个对象，只是他们名字不同而已
+   对行参的修改将影响实参的值
+
+   传引用的效率要比传址/值 效率高，不占内存
+</code></pre>
+
+<p>　　</p>
+<h3>单双引号的区别</h3>
+<pre><code>双引号会解析变量，特殊字符会被转义
+
+单引号不解析变量(解析部分特殊字符'&lt;br /&gt;')，内容都不会被转义，效率更高
+</code></pre>
+
+<blockquote>
+<p>引号使用原则</p>
+</blockquote>
+<pre><code>1.字符串的值用引号
+
+2.PHP中尽量用单引号,HTML代码全部用双引号
+
+3.在包含变量的时候,用双引号可以简化操作
+
+4.复杂的情况下用大括号包起来
+
+PHP引号还有一个用处就是，有的时候需要用php生成文本文件，换行符n需要用双引号才能好使，单引号则会直接把n当成字符输出。
+</code></pre>
+
+<blockquote>
+<p>其他</p>
+</blockquote>
+<pre><code>在JavaScript中 单引号 和双引号没有区别，只要成对使用就行，建议单引号包裹双引号
+
+在SQL中，需要拼接语句的地方，使用双引号，除此之外使用单引号
+</code></pre>
+
+<blockquote>
+<p>使用总结</p>
+</blockquote>
+<pre><code>能用单引号尽量用单引号
+</code></pre>
+
+<h3>session,cookie，session的跨域共享</h3>
+<blockquote>
+<p>区别</p>
+</blockquote>
+<ol>
+<li>
+<p>存放位置</p>
+<p>session 保存在 服务器</p>
+<pre><code>session一般存储在什么地方？
+
+1. php session默认保存在文件中，在php.ini配置文件中：
+    session.save_handler = files
+    session.save_path=D:\www\tmp  //文件地址
+
+    文件名以 sess_ 为前缀，后跟 SESSION ID，如：sess_c72665af28a8b14c0fe11afe3b59b51b
+    文件中的数据即是序列化之后的 SESSION 数据了。
+
+2. 保存在数据库中、Redis缓存中
+</code></pre>
+
+<p>cookie 保存在 客户端</p>
+<pre><code>cookie存放在本地磁盘中
+具体路径根据不同浏览器的设置而定
+</code></pre>
+
+</li>
+<li>
+<p>存放形式</p>
+<p>存放类型都是文件</p>
+<p>session以 对象 的形式存放
+cookie以 字符串 的形式存放</p>
+</li>
+<li>
+<p>用途</p>
+<p>session适合做客户的身份验证，保存重要信息
+cookie适合保存用户的个人设置，爱好等其他信息</p>
+</li>
+<li>
+<p>路径</p>
+<p>session不能区分路径，同一用户在访问一个网站期间，所有的session在任何一个地方都可以访问到
+cookie中如果设置了参数路径，那么同一个网站下的cookie互相访问不到</p>
+</li>
+<li>
+<p>安全性</p>
+<p>cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗，session较cookie更安全一些</p>
+</li>
+<li>
+<p>大小及数量的限制</p>
+<p>单个cookie在客户端的限制是4K，就是说一个站点在客户端存放的COOKIE不能4K
+不同浏览器所含cookie的最大个数不同，一般30到50个；</p>
+<p>一般认为session没有大小限制和服务器的内存大小有关</p>
+</li>
+<li>
+<p>生命周期</p>
+<p>俩者都是一种会话技术，都可以设置过期时间，即维持的生命周期；</p>
+<p>若不设置过期时间，关闭浏览器窗口，cookie就消失，session还在。</p>
+</li>
+</ol>
+<blockquote>
+<p>联系</p>
+</blockquote>
+<pre><code>session需要借助cookie才能正常工作，如果客户端完全禁止cookie，session将失效。
+
+因为session是由应用服务器维持的一个服务端的存储空间，用户在连接服务器时，会由服务器生成唯一的sesssionid，用该sessionid为标识来存取服务端的session空间
+
+sessionid是服务器和客户端链接时候随机分配的，存储在cookie中，用户提交页面时会将这个sessionid提交到服务端，来存取session数据
+</code></pre>
+
+<blockquote>
+<p>其他</p>
+</blockquote>
+<pre><code>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，如果主要考虑到减轻服务器性能方面，应当使用COOKIE
+
+sessionid是服务器和客户端链接时候随机分配的24个随机字符串
+</code></pre>
+
+<h3>异常处理</h3>
+<pre><code>try { 
+    //...   
+} catch(Exception $e) {
+    //...
+}
+
+try {
+    //好好干，出了问题不要怕，外面有人接应
+} catch (HttpException $e) {
+    //时刻准备着，处理上面抛出的HTTP问题
+} catch (Exception $e) {
+    //时刻准备着，处理他们都处理不了的问题
+} finally {
+    //打扫战场，都收拾好了再走人
+}
+
+try 中 return 后 finally 会继续执行，如果 finally 中也有return，则最终返回值为 finally 中 return 的值。
+
+try 中 die 或 exit 后 finally 不会执行。    
+
+try...catch...finally的语法结构时，return写在 finally 的逻辑中
+</code></pre>
+
+<h3>设计模式及概念和应用场景</h3>
+<h3>php连接mysql数据库的几种方式及区别</h3>
+<pre><code>mysql   面向过程
+mysqli  面向对象
+pdo     可移植性高
+</code></pre>
+
+<h3>实现静态化</h3>
+<h3>safe_mode</h3>
+<h3>error_reporting</h3>
+<h2>数据库</h2>
+<p>// 引擎innodb/myisam的区别和应用场景</p>
+<p>// 索引
+// 数据类型</p>
+<p>// 第一范式、三范式</p>
+<p>// SQL优化
+    // 索引       原则/优化/注意事项
+    // 读写分离     配置应用
+    // 主从复制     配置
+    // 语句       join代替子查询、指定字段、
+    // 缓存       Redis/Memcache
+    // 分库分表</p>
+<p>// JOIN的几种方式及区别</p>
+<p>// SQL语句写法和执行逻辑</p>
+<p>// 事务回滚</p>
+<p>// Redis基础概念、应用场景</p>
+<p>// Memcache基础概念、应用场景</p>
+<p>// MongoDB基础概念、应用场景</p>
+<p>1.memcached：单一键值对内存缓存的，做对象缓存无可替代的分布式缓存；2.redis：是算法和数据结构的集合，快速的数据结构操作是他最大的特点，支持数据持久化；3.mongodb是bson结构、介于rdb和nosql之间的，更松散更灵活的，但是不支持事务，只用作非重要数据存储。
+// 双机热备和负载均衡</p>
+<h2>Linux</h2>
+<p>// 部署环境 安装扩展
+// apache/nignx部署及配置区别和优劣势
+// Linux命令
+    // 查看/终止进程          ps
+    // 查看后面几行           tail
+    // 查找文件             find
+    // 修改权限             chmod
+    // 当前路径             pwd
+    // 软链接
+我们可以通过下面几个命令分别进行查看：</p>
+<p>1、cat命令：
+     功能：1）显示整个文件。
+          2）把文件串连接后传到基本输出，如将几个文件合并为一个文件或输出到屏幕。
+2、more命令：
+     以百分比的形式查看日志。<br />
+3、less命令：
+     跟more功能差不多，只不过less支持前后翻阅文件。
+4、head命令：
+     功能：从文本文件的头部开始查看，head 命令用于查看一个文本文件的开头部分。
+5、tail命令：
+     功能：tail 命令用于显示文本文件的末尾几行。
+// 分布式架构</p>
+<h2>安全</h2>
+<p>// post和get区别，php接收方式
+// 上传文件move_uploaded_file 及 安全防范xss 步骤、存储位置
+// 爬虫file_get_contents以及反爬虫技术
+// CSRF攻击，XSS攻击？如何防范</p>
+<h2>接口开发</h2>
+<p>// 接口API模式及遵循的规范
+// 验证access token/author2.0
+// json/xml的区别。客户端如何判断</p>
+<h2>HTTP协议</h2>
+<p>// HTTP协议及状态码应用场景</p>
+<p>// ajax异步阻塞的解决方案</p>
+<p>// 跨域请求处理方案</p>
+<h2>逻辑算法</h2>
+<p>// 排序算法类型和实现代码</p>
+<h2>代码管理、规范</h2>
+<p>// git/svn 版本控制及常见命令。
+// 冲突查看/解决的命令
+// 代码规范
+// composer</p>
+<h2>提升应用</h2>
+<p>// 电商秒杀防超卖的解决方案
+// 购物车的原理
+    主要涉及以下几点:</p>
+<pre><code>1、把商品添加到购物车，即订购
+2、删除购物车中已定购的商品
+3、修改购物车中某一本图书的订购数量
+4、清空购物车
+5、显示购物车中商品清单及数量、价格
+</code></pre>
+
+<p>// 支付接口逻辑
+// 短信、邮箱、验证、
+// CDN
+// 权限管理(RBAC)的实现</p>
+<h2>提升技术</h2>
+<p>// swoole
+// websocket
+// docket
+// 长连接和短连接的使用curl</p>
+<h2>其他</h2>
+<p>写代码来解决多进程/线程同时读写一个文件的问题。
+PHP是不支持多线程的，可以使用php的flock加锁函数实现。
+$fp = fopen(&quot;/tmp/lock.txt&quot;, &quot;w+&quot;);
+if (flock($fp, LOCK_EX)) { // 进行排它型锁定
+fwrite($fp, &quot;Write something here\n&quot;);
+flock($fp, LOCK_UN); // 释放锁定
+} else {
+echo &quot;Couldn't lock the file !&quot;;
+}
+fclose($fp);
+ MySQL数据库作发布系统的存储，一天五万条以上的增量，预计运维三年,怎么优化？
+a. 设计良好的数据库结构，允许部分数据冗余，尽量避免join查询，提高效率。
+b. 选择合适的表字段数据类型和存储引擎，适当的添加索引。
+c. mysql库主从读写分离。
+d. 找规律分表，减少单表中的数据量提高查询速度。
+e。添加缓存机制，比如memcached，apc等。
+f. 不经常改动的页面，生成静态页面。
+g. 书写高效率的SQL。比如 SELECT * FROM TABEL 改为 SELECT field_1, field_2, field_3 FROM TABLE.</p>
+<p>对于大流量的网站,您采用什么样的方法来解决各页面访问量统计问题
+a. 确认服务器是否能支撑当前访问量。
+b. 优化数据库访问。参考2.3
+c. 禁止外部访问链接（盗链）, 比如图片盗链。
+d. 控制文件下载。
+e. 使用不同主机分流。
+f. 使用浏览统计软件，了解访问量，有针对性的进行优化。</p>
+<p>正则提出一个网页中的所有链接.</p>
+<p>获取一个网页内容</p>
+<p>PHP框架及区别</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -5,6 +5,7 @@
 
 {block name="main"}
 <body class="larry-bg-gray">
+
 <div class="layui-fluid">
     <div class="larry-container">
         <!-- 快捷导航 -->
@@ -19,6 +20,7 @@
                     </a>
                 </section>
             </div>
+            
             <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
                 <section class="shortcut pos-r larry-ico-rotate">
                     <a larry-tab="iframe" class="pos-r" href="{:get_api_url('shop');}" target="_blank" data-id='302' data-group="1" data-icon="larry-chanpinC" data-font="larry-icon">
@@ -29,6 +31,7 @@
                     </a>
                 </section>
             </div>
+            
             <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col layui-hide-xs">
                 <section class="shortcut pos-r larry-ico-rotate">
                     <a larry-tab="iframe" class="pos-r" href="{:get_api_url('ecshop');}" target="_blank" data-group="3" data-icon="larry-pc" data-id="312" data-font="larry-icon">
@@ -39,6 +42,7 @@
                     </a>
                 </section>
             </div>
+            
             <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col  layui-hide-xs">
                 <section class="shortcut pos-r larry-ico-rotate">
                     <a larry-tab="iframe" class="pos-r" href="{:get_api_url('tp');}" target="_blank" data-icon="larry-xiangmu" data-font="larry-icon" data-id="798" data-group="2">
@@ -49,23 +53,24 @@
                     </a>
                 </section>
             </div>
-            
-            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
-                <section class="shortcut pos-r larry-ico-rotate">
-                    <a larry-tab="iframe" class="pos-r" href="{:get_api_url('tpshop');}" target="_blank" data-icon="larry-message_icon" data-font="larry-icon" data-id="12" data-group="0">
-                        <div class="larry-ico larry-bg-orange"><i class="larry-icon larry-message_icon"></i></div>
-                        <div class="larry-value">
-                            <cite class="un-nums">TP5.0 shop-Demo</cite>
-                        </div>
-                    </a>
-                </section>
-            </div>
+
             <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
                 <section class="shortcut larry-ico-rotate">
                     <a larry-tab="iframe" class="pos-r" href="{:get_api_url('apple');}" target="_blank" data-icon="larry-neirongguanli1" data-font="larry-icon" data-id="26" data-group='3'>
                         <div class="larry-ico larry-bg-blue"><i class="larry-icon larry-neirongguanli1"></i></div>
                         <div class="larry-value">
                             <cite class="un-nums">CMS-Demo</cite>
+                        </div>
+                    </a>
+                </section>
+            </div>
+    
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
+                <section class="shortcut pos-r larry-ico-rotate">
+                    <a larry-tab="iframe" class="pos-r" href="{:url('/info');}" target="_blank" data-icon="larry-message_icon" data-font="larry-icon" data-id="12" data-group="0">
+                        <div class="larry-ico larry-bg-orange"><i class="larry-icon larry-message_icon"></i></div>
+                        <div class="larry-value">
+                            <cite class="un-nums">PHP</cite>
                         </div>
                     </a>
                 </section>
@@ -143,7 +148,9 @@
         </div>
     </div>
 </div>
+
 </body>
+
 {/block}
 
 {block name="js"}
