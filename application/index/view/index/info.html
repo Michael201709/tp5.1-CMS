@@ -570,6 +570,8 @@ __toString()    类被当成字符串时的回应方法
 __clone()       当对象复制完成时调用
 __autoload($className)    尝试加载未定义的类
 
+__invoke($param)
+
 
 __LINE__        文件中的当前行号。
 __FILE__        文件的完整路径和文件名。如果用在被包含文件中，则返回被包含的文件名。
@@ -763,8 +765,8 @@ PHP引号还有一个用处就是，有的时候需要用php生成文本文件�
 <li>
 <p>存放形式</p>
 <p>存放类型都是文件</p>
-<p>session以 对象 的形式存放
-cookie以 字符串 的形式存放</p>
+<p>session内容以 对象 的形式存放
+cookie内容以 字符串 的形式存放</p>
 </li>
 <li>
 <p>用途</p>
@@ -789,7 +791,7 @@ cookie中如果设置了参数路径，那么同一个网站下的cookie互相�
 <li>
 <p>生命周期</p>
 <p>俩者都是一种会话技术，都可以设置过期时间，即维持的生命周期；</p>
-<p>若不设置过期时间，关闭浏览器窗口，cookie就消失，session还在。</p>
+<p>若不设置过期时间，关闭浏览器窗口，cookie就消失，session ID自动注销。</p>
 </li>
 </ol>
 <blockquote>
@@ -800,6 +802,16 @@ cookie中如果设置了参数路径，那么同一个网站下的cookie互相�
 因为session是由应用服务器维持的一个服务端的存储空间，用户在连接服务器时，会由服务器生成唯一的sesssionid，用该sessionid为标识来存取服务端的session空间
 
 sessionid是服务器和客户端链接时候随机分配的，存储在cookie中，用户提交页面时会将这个sessionid提交到服务端，来存取session数据
+
+session主要分为两部分：
+
+    一个是session数据，该部分默认是存储在服务器端的tmp目录下，是以文件形式存在
+
+    另一个是标志session数据的sessionID，sessionID就是那个session文件的文件名。
+    sessionID是随机生成的，因此能保证唯一性和随机性，确保session的安全。
+    一般来说，如果没有设置session的生存期，则sessionID一直存在客户端内存中，直到浏览器关闭（浏览器进程退出）后session ID自动注销。
+    重新请求该页面后，重新注册一个session ID。
+    如果客户端没有禁用cookie，则cookie扮演的是存储sessionID和session生存期的角色。
 </code></pre>
 
 <blockquote>
@@ -808,6 +820,25 @@ sessionid是服务器和客户端链接时候随机分配的，存储在cookie�
 <pre><code>session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，如果主要考虑到减轻服务器性能方面，应当使用COOKIE
 
 sessionid是服务器和客户端链接时候随机分配的24个随机字符串
+</code></pre>
+
+<blockquote>
+<p>SESSION 应用跨域共享实现单点登录(SSO)</p>
+</blockquote>
+<pre><code>1. 只要在php页面的最开始（要在任何输出之前，并且在session_start()之前）的地方进行以下设置
+
+ini_set('session.cookie_path', '/');
+ini_set('session.cookie_domain', '.mydomain.com');
+ini_set('session.cookie_lifetime', '1800');
+
+2. 在php.ini里设置
+session.cookie_path = /
+session.cookie_domain = .mydomain.com
+session.cookie_lifetime = 1800
+
+3. 在php页面最开始的地方调用函数
+
+session_set_cookie_params(1800 , '/', '.mydomain.com');
 </code></pre>
 
 <h3>异常处理</h3>
@@ -835,6 +866,165 @@ try...catch...finally的语法结构时，return写在 finally 的逻辑中
 </code></pre>
 
 <h3>设计模式及概念和应用场景</h3>
+<blockquote>
+<p>工厂模式--工厂方法或者类生成对象，而不是在代码中直接new</p>
+</blockquote>
+<pre><code>&lt;?php
+
+/**
+ * Class Factory    工厂模式
+ * Notes: 一个工厂类，实例化对象，只有一处new，便于修改被实例化的对象；
+ * Author: Michael Ma
+ * 
+ */
+class Factory
+{
+    /**
+     *
+     * Notes:一个静态的实例化对象方法
+     * Author: Michael Ma
+     *
+     * @return \Database
+     */
+    static function createDatabase()
+    {
+        return new Database();
+    }
+}
+
+// 类外调用 静态方法 来实现  实例化对象的功能
+$db = Factory::createDatabase();
+</code></pre>
+
+<blockquote>
+<p>单例模式--使某个类的对象仅允许创建一个</p>
+</blockquote>
+<pre><code>&lt;?php
+
+/**
+ * Class Database   单例模式
+ * Notes: 常用于连接一个数据库的类，只有一次被连接，无论你发起多少次连接请求；
+ * Author: Michael Ma
+ *
+ */
+class Database
+{
+    // 一个受保护或私有的类属性
+    protected $db;
+
+    /**
+     * Database constructor.
+     * Notes: 声明一个私有的构造方法，
+     *        使该类无法在类外被实例化new，仅允许在本类中实例化
+     *
+     *        哪怕是空的.
+     */
+    private function __construct()
+    {
+    }
+
+    /**
+     *
+     * Notes: 声明一个静态的getInstance方法，实例化自己，
+     *        并赋值给一个受保护/私有的 静态 类属性；
+     *
+     * Author: Michael Ma
+     *
+     * @return \Database
+     */
+    static function getInstance()
+    {
+        /**
+         * 如果已经被实例化一次了，就直接 return 出去；
+         * 如果没有被 实例化过就 实例化一次，再 return 出去；
+         *
+         */
+        // return self::$db = self::$db ? :new self();
+        if (self::$db) {
+            return self::$db;
+        } else {
+            self::$db = new self();
+
+            return self::$db;
+        }
+    }
+}
+
+// 类外不允许实例化new一个私有的构造类
+// $db = new Database();
+
+// 如此一来，不管你调用几次该类的静态方法，来实现实例化功能，它也仅仅只 执行一次，从而节约资源的占用；
+$db = Database::getInstance();
+</code></pre>
+
+<blockquote>
+<p>注册模式--全局共享和交换对象</p>
+</blockquote>
+<pre><code>&lt;?php
+
+class Register
+{
+    // 声明一个静态属性的数组来存放 注册树上的对象
+    protected static $arr;
+
+    /**
+     *
+     * Notes: 存放/设置一个全局树对象
+     * Author: Michael Ma
+     *
+     * @param $key
+     * @param $value
+     */
+    static function set($key, $value)
+    {
+        self::$arr[$key] = $value;
+    }
+
+    /**
+     *
+     * Notes:获取指定的全局树对象
+     * Author: Michael Ma
+     *
+     * @param $key
+     *
+     * @return mixed
+     */
+    static function get($key)
+    {
+        return self::$arr[$key];
+    }
+
+    /**
+     *
+     * Notes:销毁/释放全局树的指定对象
+     * Author: Michael Ma
+     *
+     * @param $key
+     */
+    function _unset($key)
+    {
+        unset(self::$arr[$key]);
+    }
+}
+
+// 调用 注册器模式的一个静态获取对象方法
+$db = Register::get('db');
+</code></pre>
+
+<blockquote>
+<p>策略模式
+适配器模式
+观察者模式
+门面模式
+原型模式
+装饰器模式
+迭代器模式
+代理模式
+数据对象映射模式</p>
+</blockquote>
+<p>Courier New </p>
+<p>Consolas</p>
+<p>Source Code Pro</p>
 <h3>php连接mysql数据库的几种方式及区别</h3>
 <pre><code>mysql   面向过程
 mysqli  面向对象
@@ -864,6 +1054,13 @@ pdo     可移植性高
 <p>// MongoDB基础概念、应用场景</p>
 <p>1.memcached：单一键值对内存缓存的，做对象缓存无可替代的分布式缓存；2.redis：是算法和数据结构的集合，快速的数据结构操作是他最大的特点，支持数据持久化；3.mongodb是bson结构、介于rdb和nosql之间的，更松散更灵活的，但是不支持事务，只用作非重要数据存储。
 // 双机热备和负载均衡</p>
+<h3>其他拓展</h3>
+<pre><code>spl_autoload_register()与__autoload()的区别是一个项目可能存在载入多个框架的类来实现
+
+ __autoload() 5.3之后采用了更先进的 spl_autoload_register()函数
+spl_autoload_register()函数取代了autoload()函数，可以兼容多个框架中的多个类的自动载入，避免出现__autoload（）在自动载入时会出现函数重复定义的报错
+</code></pre>
+
 <h2>Linux</h2>
 <p>// 部署环境 安装扩展
 // apache/nignx部署及配置区别和优劣势
